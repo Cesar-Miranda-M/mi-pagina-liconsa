@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>LICONSA - Módulos Esenciales</title>
+
+  <!-- Tipografía moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Íconos Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --verde-oscuro: #2F4F46;
+      --verde-medio: #3F5F55;
+      --verde-claro: #4A7C6D;
+      --beige-fondo: #F8EEDC;
+      --beige-claro: #FBF6ED;
+      --beige-dorado: #E8D5B5;
+      --gris-texto: #444;
+      --blanco: #FFFFFF;
+      --sombra: 0 4px 12px rgba(0,0,0,0.1);
+      --sombra-intensa: 0 8px 25px rgba(0,0,0,0.15);
+      --borde-radio: 14px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--beige-fondo);
+      color: var(--gris-texto);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-medio) 100%);
+      color: white;
+      padding: 18px 0;
+      box-shadow: var(--sombra-intensa);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      font-weight: 800;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+    }
+
+    .logo img {
+      height: 55px;
+      margin-right: 12px;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .nav-links li {
+      margin-left: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #F0F0F0;
+      transition: all 0.3s;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 10px 18px;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 6px;
+      left: 18px;
+      background-color: var(--beige-dorado);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover:after {
+      width: calc(100% - 36px);
+    }
+
+    .nav-buttons .btn {
+      background: var(--beige-dorado);
+      color: var(--verde-oscuro);
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: all 0.3s;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-buttons .btn:hover {
+      background: #FFF3E0;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+    }
+
+    .main-section {
+      background: linear-gradient(135deg, var(--beige-claro) 0%, #f5f0e6 100%);
+      padding: 80px 0 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Imagen de fondo agregada aquí */
+    .main-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('fondo-modulos.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15; /* Ajuste de opacidad para legibilidad */
+      z-index: 0;
+    }
+
+    .main-section .container {
+      position: relative;
+      z-index: 1; /* Asegura que el contenido esté por encima de la imagen de fondo */
+    }
+
+    .main-section h1 {
+      color: var(--verde-oscuro);
+      font-size: 3.2rem;
+      margin-bottom: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .main-section h1:after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--verde-medio), var(--beige-dorado));
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .main-section p {
+      color: #555;
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin: 40px auto 0;
+      line-height: 1.7;
+    }
+
+    .modules {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 60px;
+    }
+
+    .module-card {
+      background: var(--beige-fondo);
+      border-radius: var(--borde-radio);
+      box-shadow: var(--sombra);
+      padding: 25px;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .module-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .module-card h3 {
+      color: var(--verde-oscuro);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      padding-right: 70px; /* Espacio para el icono */
+      font-weight: 700;
+    }
+
+    .module-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 10px;
+    }
+
+    .module-card ul li {
+      margin: 10px 0;
+      font-size: 1.05rem;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .module-card ul li:before {
+      content: "✓";
+      color: var(--verde-medio);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .module-card img.icono {
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      object-fit: contain;
+      filter: brightness(0.9);
+    }
+
+    /* --- Sección del mapa --- */
+    .mapa {
+      background: var(--beige-claro);
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .mapa h2 {
+      color: var(--verde-oscuro);
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .mapa iframe {
+      border: 0;
+      border-radius: var(--borde-radio);
+      width: 100%;
+      height: 480px;
+      box-shadow: var(--sombra-intensa);
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-medio) 100%);
+      color: #EEE;
+      padding: 40px 0 20px;
+      text-align: center;
+      font-size: 0.95rem;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navbar">
+      <a href="#" class="logo">
+        <img src="logo-liconsa.png" alt="Logo LICONSA">
+        
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Beneficiarios</a></li>
+        <li><a href="#">Público General</a></li>
+        <li><a href="#">Usuarios</a></li>
+      </ul>
+
+      <div class="nav-buttons">
+        <a href="#" class="btn"><i class="fas fa-sign-in-alt"></i> Acceder</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="main-section">
+    <div class="container">
+      <h1>Módulos Esenciales</h1>
+      <p>Sistema integral que conecta <strong>beneficiarios, usuarios, público general</strong> y <strong>administración</strong><br>en una plataforma unificada para una gestión eficiente y transparente.</p>
+
+      <div class="modules">
+
+        <!-- Beneficiarios -->
+        <div class="module-card">
+          <img src="verificacion_liconsa.png" class="icono" alt="icono beneficiarios">
+          <h3>Para Beneficiarios</h3>
+          <ul>
+            <li>CURP</li>
+            <li>Número de tarjeta</li>
+            <li>Biometría (opcional)</li>
+          </ul>
+        </div>
+
+        <!-- Público general -->
+        <div class="module-card">
+          <img src="para_publico_general_liconsa.png" class="icono" alt="icono público general">
+          <h3>Para Público General</h3>
+          <ul>
+            <li>Productos sin subsidio</li>
+            <li>Precios regulares</li>
+          </ul>
+        </div>
+
+        <!-- Usuarios -->
+        <div class="module-card">
+          <img src="usuarios_liconsa.png" class="icono" alt="icono usuarios">
+          <h3>Para Usuarios</h3>
+          <ul>
+            <li>Sistema de verificación</li>
+            <li>Gestión de inventario</li>
+            <li>Carritos segmentados</li>
+            <li>Puntos de distribución</li>
+          </ul>
+        </div>
+
+        <!-- Administración -->
+        <div class="module-card">
+          <img src="administracion_liconsa.png" class="icono" alt="icono administración">
+          <h3>Para Administración</h3>
+          <ul>
+            <li>Control de inventario</li>
+            <li>Reportes</li>
+            <li>Gestión de puntos</li>
+            <li>Gestión de distribución</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 🌎 Mapa de centros de distribución -->
+  <section class="mapa">
+    <div class="container">
+      <h2>Mapa de Centros de Distribución LICONSA</h2>
+      <p>Consulta los puntos de suministro de leche en todo México.</p>
+      <iframe 
+        src="https://www.google.com/maps/d/embed?mid=1heeo3LfxfeDt1wJws0rGa2Vkm5V_ndA&ehbc=2E312F"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 LICONSA - Sistema de Apoyo Alimentario</p>
+  </footer>
+
+</body>
+</html>
