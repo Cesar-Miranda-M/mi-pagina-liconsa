@@ -132,6 +132,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
     }
 
     .nav-buttons .btn:hover {
@@ -215,6 +216,7 @@
       display: flex;
       flex-direction: column;
       border: 1px solid rgba(0,0,0,0.05);
+      min-height: 220px;
     }
 
     .module-card:hover {
@@ -226,7 +228,7 @@
       color: var(--verde-oscuro);
       margin-bottom: 15px;
       font-size: 1.4rem;
-      padding-right: 70px;
+      padding-right: 90px;
       font-weight: 700;
     }
 
@@ -252,32 +254,16 @@
     }
 
     .module-card img.icono {
-      width: 60px;
-      height: 60px;
+      width: 64px;
+      height: 64px;
       position: absolute;
-      top: 25px;
-      right: 25px;
+      top: 24px;
+      right: 24px;
       object-fit: contain;
-      filter: brightness(0.9);
+      filter: brightness(0.95);
     }
 
-    /* Botón agregado */
-    .btn-registrar {
-      background: var(--verde-oscuro);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      margin-top: 15px;
-      display: inline-block;
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .btn-registrar:hover {
-      background: var(--verde-medio);
-    }
+    .btn-registrar { display: none; } /* ← botón eliminado */
 
     .mapa {
       background: var(--beige-claro);
@@ -308,6 +294,67 @@
       font-size: 0.95rem;
       margin-top: 60px;
     }
+
+    /* ---------------- MODALES DE REGISTRO + LOGIN --------------- */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.45);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-inner {
+      background: #fff;
+      width: 420px;
+      max-width: 92%;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+
+    .modal-inner h2 {
+      color: var(--verde-oscuro);
+      margin-bottom: 12px;
+    }
+
+    .modal-inner .cerrar {
+      float: right;
+      font-size: 22px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .modal-inner label {
+      display: block;
+      margin-top: 10px;
+      color: var(--verde-medio);
+      font-weight: 600;
+    }
+
+    .modal-inner input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #cfcfcf;
+    }
+
+    .modal-inner .btn-guardar {
+      margin-top: 14px;
+      background: var(--verde-oscuro);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      width: 100%;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
   </style>
 </head>
 
@@ -327,7 +374,9 @@
       </ul>
 
       <div class="nav-buttons">
-        <a href="#" class="btn"><i class="fas fa-sign-in-alt"></i> Acceder</a>
+        <a href="javascript:void(0)" class="btn" onclick="openModal('modalLogin')">
+          <i class="fas fa-sign-in-alt"></i> Acceder
+        </a>
       </div>
     </div>
   </header>
@@ -340,7 +389,7 @@
       <div class="modules">
 
         <!-- Beneficiarios -->
-        <div class="module-card">
+        <div class="module-card" onclick="openModal('modalBeneficiarios')">
           <img src="verificacion_liconsa.png" class="icono" alt="icono beneficiarios">
           <h3>Para Beneficiarios</h3>
           <ul>
@@ -348,9 +397,6 @@
             <li>Número de tarjeta</li>
             <li>Biometría (opcional)</li>
           </ul>
-
-          <!-- 🔥 BOTÓN AGREGADO AQUÍ -->
-          <a href="registro.html" class="btn-registrar">Registrar Beneficiario</a>
         </div>
 
         <!-- Público general -->
@@ -364,7 +410,7 @@
         </div>
 
         <!-- Usuarios -->
-        <div class="module-card">
+        <div class="module-card" onclick="openModal('modalUsuarios')">
           <img src="usuarios_liconsa.png" class="icono" alt="icono usuarios">
           <h3>Para Usuarios</h3>
           <ul>
@@ -391,7 +437,6 @@
     </div>
   </section>
 
-  <!-- 🌎 Mapa de centros de distribución -->
   <section class="mapa">
     <div class="container">
       <h2>Mapa de Centros de Distribución LICONSA</h2>
@@ -408,5 +453,115 @@
     <p>© 2025 LICONSA - Sistema de Apoyo Alimentario</p>
   </footer>
 
+  <!-- LOGIN -->
+  <div id="modalLogin" class="modal">
+    <div class="modal-inner">
+      <span class="cerrar" onclick="closeModal('modalLogin')">&times;</span>
+      <h2>Acceder</h2>
+
+      <label for="loginEmail">Correo electrónico:</label>
+      <input id="loginEmail" type="email" placeholder="correo@ejemplo.com">
+
+      <label for="loginPass">Contraseña:</label>
+      <input id="loginPass" type="password" placeholder="••••••••">
+
+      <button class="btn-guardar" onclick="handleLogin()">Ingresar</button>
+    </div>
+  </div>
+
+  <!-- Beneficiarios -->
+  <div id="modalBeneficiarios" class="modal">
+    <div class="modal-inner">
+      <span class="cerrar" onclick="closeModal('modalBeneficiarios')">&times;</span>
+      <h2>Registro de Beneficiarios</h2>
+
+      <label for="benNombre">Nombre:</label>
+      <input id="benNombre" type="text">
+
+      <label for="benApellidos">Apellidos:</label>
+      <input id="benApellidos" type="text">
+
+      <label for="benEdad">Edad:</label>
+      <input id="benEdad" type="number">
+
+      <label for="benCorreo">Correo electrónico:</label>
+      <input id="benCorreo" type="email">
+
+      <label for="benCurp">CURP:</label>
+      <input id="benCurp" type="text">
+
+      <label for="benTarjeta">Número de tarjeta:</label>
+      <input id="benTarjeta" type="text">
+
+      <button class="btn-guardar" onclick="guardarBeneficiario()">Guardar</button>
+    </div>
+  </div>
+
+  <!-- Usuarios -->
+  <div id="modalUsuarios" class="modal">
+    <div class="modal-inner">
+      <span class="cerrar" onclick="closeModal('modalUsuarios')">&times;</span>
+      <h2>Registro de Usuarios</h2>
+
+      <label for="usrNombre">Nombre del usuario:</label>
+      <input id="usrNombre" type="text">
+
+      <label for="usrVerif">Sistema de verificación:</label>
+      <input id="usrVerif" type="text">
+
+      <label for="usrInvent">Gestión de inventario:</label>
+      <input id="usrInvent" type="text">
+
+      <label for="usrCarritos">Carritos segmentados:</label>
+      <input id="usrCarritos" type="text">
+
+      <label for="usrPuntos">Puntos de distribución:</label>
+      <input id="usrPuntos" type="text">
+
+      <button class="btn-guardar" onclick="guardarUsuario()">Guardar</button>
+    </div>
+  </div>
+
+<script>
+  function openModal(id) {
+    const m = document.getElementById(id);
+    if (!m) return;
+    m.style.display = 'flex';
+    m.style.alignItems = 'center';
+    m.style.justifyContent = 'center';
+  }
+
+  function closeModal(id) {
+    const m = document.getElementById(id);
+    if (!m) return;
+    m.style.display = 'none';
+  }
+
+  window.addEventListener('click', function(e){
+    const modals = ['modalLogin','modalBeneficiarios','modalUsuarios'];
+    modals.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && e.target === el) closeModal(id);
+    });
+  });
+
+  function handleLogin(){
+    closeModal('modalLogin');
+    alert('Intento de inicio de sesión (demo)');
+  }
+
+  function guardarBeneficiario(){
+    closeModal('modalBeneficiarios');
+    alert('Beneficiario guardado (demo)');
+  }
+
+  function guardarUsuario(){
+    closeModal('modalUsuarios');
+    alert('Usuario guardado (demo)');
+  }
+</script>
+
 </body>
 </html>
+
+
