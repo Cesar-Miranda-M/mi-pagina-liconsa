@@ -148,7 +148,6 @@
       overflow: hidden;
     }
 
-    /* Imagen de fondo agregada aquí */
     .main-section:before {
       content: '';
       position: absolute;
@@ -159,13 +158,13 @@
       background-image: url('fondo-modulos.png');
       background-size: cover;
       background-position: center;
-      opacity: 0.15; /* Ajuste de opacidad para legibilidad */
+      opacity: 0.15;
       z-index: 0;
     }
 
     .main-section .container {
       position: relative;
-      z-index: 1; /* Asegura que el contenido esté por encima de la imagen de fondo */
+      z-index: 1;
     }
 
     .main-section h1 {
@@ -227,7 +226,7 @@
       color: var(--verde-oscuro);
       margin-bottom: 15px;
       font-size: 1.4rem;
-      padding-right: 70px; /* Espacio para el icono */
+      padding-right: 70px;
       font-weight: 700;
     }
 
@@ -262,7 +261,24 @@
       filter: brightness(0.9);
     }
 
-    /* --- Sección del mapa --- */
+    /* Botón agregado */
+    .btn-registrar {
+      background: var(--verde-oscuro);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      margin-top: 15px;
+      display: inline-block;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .btn-registrar:hover {
+      background: var(--verde-medio);
+    }
+
     .mapa {
       background: var(--beige-claro);
       padding: 60px 0;
@@ -300,8 +316,7 @@
   <header>
     <div class="container navbar">
       <a href="#" class="logo">
-        <img src="https://pbs.twimg.com/media/CVmsN1wU8AAsT5E.png" alt="Logo LICONSA">
-        
+        <img src="logo-liconsa.png" alt="Logo LICONSA">
       </a>
 
       <ul class="nav-links">
@@ -326,18 +341,21 @@
 
         <!-- Beneficiarios -->
         <div class="module-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/1540/1540284.png" class="icono" alt="icono beneficiarios">
+          <img src="verificacion_liconsa.png" class="icono" alt="icono beneficiarios">
           <h3>Para Beneficiarios</h3>
           <ul>
             <li>CURP</li>
             <li>Número de tarjeta</li>
             <li>Biometría (opcional)</li>
           </ul>
+
+          <!-- 🔥 BOTÓN AGREGADO AQUÍ -->
+          <a href="registro.html" class="btn-registrar">Registrar Beneficiario</a>
         </div>
 
         <!-- Público general -->
         <div class="module-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/87/87196.png" class="icono" alt="icono público general">
+          <img src="para_publico_general_liconsa.png" class="icono" alt="icono público general">
           <h3>Para Público General</h3>
           <ul>
             <li>Productos sin subsidio</li>
@@ -347,7 +365,7 @@
 
         <!-- Usuarios -->
         <div class="module-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/1246/1246351.png" class="icono" alt="icono usuarios">
+          <img src="usuarios_liconsa.png" class="icono" alt="icono usuarios">
           <h3>Para Usuarios</h3>
           <ul>
             <li>Sistema de verificación</li>
@@ -359,7 +377,7 @@
 
         <!-- Administración -->
         <div class="module-card">
-          <img src="https://png.pngtree.com/png-clipart/20230418/original/pngtree-administrator-line-icon-png-image_9064932.png" class="icono" alt="icono administración">
+          <img src="administracion_liconsa.png" class="icono" alt="icono administración">
           <h3>Para Administración</h3>
           <ul>
             <li>Control de inventario</li>
@@ -391,16 +409,4 @@
   </footer>
 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
