@@ -217,6 +217,7 @@
       flex-direction: column;
       border: 1px solid rgba(0,0,0,0.05);
       min-height: 220px;
+      cursor: pointer;
     }
 
     .module-card:hover {
@@ -264,6 +265,89 @@
     }
 
     .btn-registrar { display: none; } /* ← botón eliminado */
+
+    /* ============ NUEVA SECCIÓN: OPTIMIZACIÓN ============ */
+    .optimizacion {
+      background: var(--beige-claro);
+      padding: 80px 0;
+      margin-top: 40px;
+    }
+
+    .optimizacion h2 {
+      color: var(--verde-oscuro);
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .optimizacion p {
+      color: #555;
+      font-size: 1.2rem;
+      max-width: 900px;
+      margin: 0 auto 40px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .optimizacion-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .optimizacion-card {
+      background: white;
+      border-radius: var(--borde-radio);
+      box-shadow: var(--sombra);
+      padding: 30px;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 4px solid var(--verde-medio);
+    }
+
+    .optimizacion-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+
+    .optimizacion-card h3 {
+      color: var(--verde-oscuro);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .optimizacion-card h3 i {
+      color: var(--verde-medio);
+      font-size: 1.3rem;
+    }
+
+    .optimizacion-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 15px;
+    }
+
+    .optimizacion-card ul li {
+      margin: 12px 0;
+      font-size: 1.05rem;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .optimizacion-card ul li:before {
+      content: "•";
+      color: var(--verde-medio);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
 
     .mapa {
       background: var(--beige-claro);
@@ -437,6 +521,42 @@
     </div>
   </section>
 
+  <!-- ============ NUEVA SECCIÓN: OPTIMIZACIÓN ============ -->
+  <section class="optimizacion">
+    <div class="container">
+      <h2>Optimización del Programa de Apoyo Social</h2>
+      <p>Implementamos un sistema integral de registro, control y análisis de datos que garantiza transparencia, previene fraudes y permite una distribución eficiente basada en evidencia de la leche subsidiada.</p>
+      
+      <div class="optimizacion-grid">
+        
+        <div class="optimizacion-card">
+          <h3><i class="fas fa-user-check"></i> Registro Digital Verificado</h3>
+          <ul>
+            <li><strong>Facilitamos el registro:</strong> Plataforma digital accesible desde cualquier dispositivo y centros de apoyo en comunidades.</li>
+            <li><strong>Garantizamos transparencia:</strong> Integración con bases de datos oficiales (CURP, padrón de programas sociales) para validar elegibilidad.</li>
+          </ul>
+        </div>
+        
+        <div class="optimizacion-card">
+          <h3><i class="fas fa-chart-line"></i> Control en Tiempo Real</h3>
+          <ul>
+            <li><strong>Rastreo total de distribución:</strong> Cada entrega registrada con códigos QR o sistemas biométricos.</li>
+            <li><strong>Evitamos estafas y desvíos:</strong> Control punto por punto para detectar irregularidades en inventario y ventas.</li>
+          </ul>
+        </div>
+        
+        <div class="optimizacion-card">
+          <h3><i class="fas fa-database"></i> Análisis Inteligente de Datos</h3>
+          <ul>
+            <li><strong>Sabemos quién y dónde se consume:</strong> Información precisa sobre beneficiarios activos y consumo por zona.</li>
+            <li><strong>Optimizamos la ayuda:</strong> Ajustamos envíos según demanda real y planificamos rutas eficientes.</li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
   <section class="mapa">
     <div class="container">
       <h2>Mapa de Centros de Distribución LICONSA</h2>
@@ -563,5 +683,3 @@
 
 </body>
 </html>
-
-
